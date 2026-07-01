@@ -17,6 +17,20 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
+  // Keep asset URLs inside Coder's path-based application proxy.
+  base: './',
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
+    allowedHosts: ['coder.mtb.com'],
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
+    allowedHosts: ['coder.mtb.com'],
+  },
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
